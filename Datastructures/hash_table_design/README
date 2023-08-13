@@ -1,0 +1,32 @@
+LEETCODE 796 DESIGN Hashmap
+
+built-in:
+    hash_table = unordered_set
+
+
+Idea:
+    use hash(): to map keys(the items) to buckets(index)
+    hash function= x % B   ->where B is the number of buckets (array size)
+        
+        -hash function will depend on the range of key values and the number of buckets.
+
+simple design: LinkedList as Bucket
+        -the main idean in simple design is to maintain N=B
+
+        -If you know, in advance, that n items will be put in the table, then choosing B = n 
+            -fixed size array of size (B)
+            -use linked_list to handle collisions (items with same hash value)
+        
+        -If you don't know the number of items in advance, 
+            -then you can use a dynamic array, and double the size of the array when N=B
+            - use linked list to handle collisions (items with same hash value)
+
+
+complex design: Balanced BST as Bucket (only for hash_tables)
+        - If there are too many values in the same bucket, these values will be maintained in a height-balanced binary search tree instead.
+
+advantages:
+    o(1) search , insert and delete
+
+disadvantage:
+    no order
