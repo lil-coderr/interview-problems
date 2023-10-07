@@ -1,12 +1,19 @@
-LEETCODE 796 DESIGN Hashmap
 
 built-in:
-    hash_table = unordered_set
-
+c++:
+    hash_set = unordered_set
+    hash_map = unordered_map 
+python: 
+    hash_set = set
+    hash_map = dict
+javascript:
+    hash_set = Set
+    hash_map = Map
+    
 
 Idea:
     use hash(): to map keys(the items) to buckets(index)
-    hash function= x % B   ->where B is the number of buckets (array size)
+    hash function= x % B   -> where B is the number of buckets (array size)
         
         -hash function will depend on the range of key values and the number of buckets.
 
@@ -22,8 +29,9 @@ simple design: LinkedList as Bucket
             - use linked list to handle collisions (items with same hash value)
 
 
-complex design: Balanced BST as Bucket (only for hash_tables)
-        - If there are too many values in the same bucket, these values will be maintained in a height-balanced binary search tree instead.
+complex design: dynamically sized array as Bucket
+        -the main idea in complex design is to maintain a load factor (alpha) = N/B = 1 (or close to 1)
+
 
 advantages:
     o(1) search , insert and delete
